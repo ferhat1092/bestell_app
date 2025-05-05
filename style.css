@@ -1,16 +1,3 @@
-* {
-    caret-color: transparent;
+.small {
+    height: 88px;
 }
-
-html {
-    margin: 0;
-}
-
-body {
-
-}
-
-.header-logo {
-    height: 56px;
-    width:  56px;
-} 

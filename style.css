@@ -2,6 +2,10 @@
     caret-color: transparent;
 }
 
+body {
+    background-color: rgb(4, 55, 133) !important;
+}
+
 .small {
     height: 88px;
 }

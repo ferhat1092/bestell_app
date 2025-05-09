@@ -11,16 +11,17 @@
 </head>
 
 <body onload="init()">
-    <header class="">
+    <header>
         <img src="./img/Favicon/android-chrome-192x192.png" alt="headerLogo" class="small p-3">
     </header>
-    <section class="main-container d-flex">
-        <div class="hero">
+    <section id="main-container" class="d-flex justify-content-between">
+        <div id="hero">
             <img class="mb-2" src="./img/wok.jpg" alt="mainImg">
             <div class="m-4" id="dinners"></div>
         </div>
-        <div class="basket">
-            <div class="basket-header">Warenkorb</div>
+        <div id="basket">
+            <div id="basket_header" class="text-white fs-2">Warenkorb</div>
+            <div id="basket_order"></div>
         </div>
     </section>
     <footer class="d-flex justify-content-center">

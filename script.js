@@ -65,17 +65,20 @@ function renderBasketOrders() {
          `;
     };
 
-    totalPriceOfOrders();
+     renderBasketTotalPrice();
 };
 
-function totalPriceOfOrders() {
+function renderBasketTotalPrice() {
     let totalPrice = 0;
+    let basketTotalPrice = document.getElementById('basket_total_price');
+    basketTotalPrice.innerHTML = '';
     for (let indexTotal = 0; indexTotal < basketPreisArr.length; indexTotal++) {
-        totalPrice += basketPreisArr[indexTotal];
+        totalPrice += basketPreisArr[indexTotal];''
+        basketTotalPrice.innerHTML = `
+        <p class="text-white fs-3">Gesamt: ${totalPrice}</p>
+        `;
+    };
 
-    }
-    
-    console.log(totalPrice);
-}
+};
 
 

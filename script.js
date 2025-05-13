@@ -28,8 +28,7 @@ let dinnersArr = [
 
 let basketMahlzeitArr = [];
 let basketPreisArr = [];
-
-
+let basketIndicesArr = [];
 
 function init() {
     renderDinners();
@@ -41,19 +40,25 @@ function renderDinners() {
     for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
         dinners.innerHTML += `
         <div class="card w-100 mb-2 bg-secondary">
-    <h5 class="card-title text-white fs-1 text-center">${dinnersArr[indexDinners].Mahlzeit}</h5>
-    <h6 class="card-subtitle text-muted">Preis: ${dinnersArr[indexDinners].Preis}€</h6>
-    <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
-     <button class="btn btn-dark" onclick="pushToBasket(${indexDinners})">In den Warenkorb</button>
-  </div>
-`;
+            <h5 class="card-title text-white fs-1 text-center">${dinnersArr[indexDinners].Mahlzeit}</h5>
+            <h6 class="card-subtitle text-muted">Preis: ${dinnersArr[indexDinners].Preis}€</h6>
+            <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
+            <button class="btn btn-dark" onclick="pushToBasket(${indexDinners})">In den Warenkorb</button>
+        </div>
+        `;
     };
 };
 
 function pushToBasket(indexDinners) {
-    basketMahlzeitArr.push(dinnersArr[indexDinners].Mahlzeit);
-    basketPreisArr.push(dinnersArr[indexDinners].Preis);
-    renderBasketOrders();
+     if (!basketIndicesArr.includes(indexDinners)) {
+        basketMahlzeitArr.push(dinnersArr[indexDinners].Mahlzeit);
+        basketPreisArr.push(dinnersArr[indexDinners].Preis);
+        basketIndicesArr.push(indexDinners); 
+        renderBasketOrders();
+    } else {
+        console.log('hello');
+        
+    }
 };
 
 function renderBasketOrders() {
@@ -64,21 +69,20 @@ function renderBasketOrders() {
         <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€</p>;
          `;
     };
-
-     renderBasketTotalPrice();
+    renderBasketTotalPrice();
 };
+
 
 function renderBasketTotalPrice() {
     let totalPrice = 0;
     let basketTotalPrice = document.getElementById('basket_total_price');
     basketTotalPrice.innerHTML = '';
     for (let indexTotal = 0; indexTotal < basketPreisArr.length; indexTotal++) {
-        totalPrice += basketPreisArr[indexTotal];''
+        totalPrice += basketPreisArr[indexTotal];
         basketTotalPrice.innerHTML = `
-        <p class="text-white fs-3">Gesamt: ${totalPrice}</p>
+        <p class="text-white fs-3">Gesamt: ${totalPrice}€</p>
         `;
     };
-
 };
 
 

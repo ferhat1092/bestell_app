@@ -2,27 +2,32 @@ let dinnersArr = [
     {
         "Mahlzeit": "erste Mahlzeit",
         "Preis": 5,
-        "Beschreibung": "die Beschreibung vom Essen"
+        "Beschreibung": "die Beschreibung vom Essen",
+        "amount": 0
     },
     {
         "Mahlzeit": "zweite Mahlzeit",
         "Preis": 7,
-        "Beschreibung": "die Beschreibung vom Essen"
+        "Beschreibung": "die Beschreibung vom Essen",
+        "amount": 0
     },
     {
         "Mahlzeit": "dritte Mahlzeit",
         "Preis": 11,
-        "Beschreibung": "die Beschreibung vom Essen"
+        "Beschreibung": "die Beschreibung vom Essen",
+        "amount": 0
     },
     {
         "Mahlzeit": "vierte Mahlzeit",
         "Preis": 14,
-        "Beschreibung": "die Beschreibung vom Essen"
+        "Beschreibung": "die Beschreibung vom Essen",
+        "amount": 0
     },
     {
         "Mahlzeit": "fünfte Mahlzeit",
         "Preis": 16,
-        "Beschreibung": "die Beschreibung vom Essen"
+        "Beschreibung": "die Beschreibung vom Essen",
+        "amount": 0
     }
 ];
 
@@ -54,10 +59,11 @@ function pushToBasket(indexDinners) {
      if (!basketIndicesArr.includes(indexDinners)) {
         basketMahlzeitArr.push(dinnersArr[indexDinners].Mahlzeit);
         basketPreisArr.push(dinnersArr[indexDinners].Preis);
-        basketIndicesArr.push(indexDinners); 
+        basketAmountOrdersArr.push(dinnersArr[indexDinners].amount);
+        basketIndicesArr.push(indexDinners);
         renderBasketOrders();
     } else {
-        basketAmountOrdersArr.push(indexDinners);
+        basketAmountOrdersArr.push(dinnersArr[indexDinners].amount);
         renderBasketOrders();
     }
 };
@@ -67,7 +73,7 @@ function renderBasketOrders() {
     basketOrder.innerHTML = '';
     for (let indexBasket = 0; indexBasket < basketMahlzeitArr.length; indexBasket++) {
         basketOrder.innerHTML += ` 
-        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€ x${basketAmountOrdersArr.length}</p>;
+        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€ x${basketAmountOrdersArr[indexBasket]}</p>;
          `;
     };
     renderBasketTotalPrice();

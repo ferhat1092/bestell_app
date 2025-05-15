@@ -33,6 +33,7 @@ let dinnersArr = [
 
 let basketMahlzeitArr = [];
 let basketPreisArr = [];
+let amountOrders = 0;
 
 function init() {
     renderDinners();
@@ -56,6 +57,7 @@ function renderDinners() {
 function pushToBasket(indexDinners) {
         basketMahlzeitArr.push(dinnersArr[indexDinners].Mahlzeit);
         basketPreisArr.push(dinnersArr[indexDinners].Preis);
+        amountOrders = dinnersArr[indexDinners].amount++;
         renderBasketOrders();
 };
 
@@ -64,7 +66,7 @@ function renderBasketOrders() {
     basketOrder.innerHTML = '';
     for (let indexBasket = 0; indexBasket < basketMahlzeitArr.length; indexBasket++) {
         basketOrder.innerHTML += `
-        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€</p>
+        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€ x${amountOrders}</p>
          `;
     };
     renderBasketTotalPrice();

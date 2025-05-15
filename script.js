@@ -33,8 +33,8 @@ let dinnersArr = [
 
 let basketMahlzeitArr = [];
 let basketPreisArr = [];
-let basketIndicesArr = [];
 let basketAmountOrdersArr = [];
+let amountOrdersRef = 0;
 
 function init() {
     renderDinners();
@@ -56,25 +56,23 @@ function renderDinners() {
 };
 
 function pushToBasket(indexDinners) {
-     if (!basketIndicesArr.includes(indexDinners)) {
         basketMahlzeitArr.push(dinnersArr[indexDinners].Mahlzeit);
         basketPreisArr.push(dinnersArr[indexDinners].Preis);
-        basketAmountOrdersArr.push(dinnersArr[indexDinners].amount);
-        basketIndicesArr.push(indexDinners);
+        amountOrdersRef = dinnersArr[indexDinners].amount++;
         renderBasketOrders();
-    } else {
-        basketAmountOrdersArr.push(dinnersArr[indexDinners].amount);
-        renderBasketOrders();
-    }
 };
 
 function renderBasketOrders() {
     let basketOrder = document.getElementById('basket_order');
+    let amountOrders = document.getElementById('amount_orders');
+    // amountOrders.innerHTML = '';
     basketOrder.innerHTML = '';
     for (let indexBasket = 0; indexBasket < basketMahlzeitArr.length; indexBasket++) {
-        basketOrder.innerHTML += ` 
-        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€ x${basketAmountOrdersArr[indexBasket]}</p>;
+        basketOrder.innerHTML += `
+        <p class="text-white fs-3">${basketMahlzeitArr[indexBasket]}: ${basketPreisArr[indexBasket]}€</p>
+        <div id="amount_orders"></div>
          `;
+         amountOrders.innerHTML = `<p>x${amountOrdersRef}</p>`;
     };
     renderBasketTotalPrice();
 };

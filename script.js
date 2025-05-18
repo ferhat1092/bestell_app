@@ -1,13 +1,13 @@
 let dinnersArr = [
     {
         "Mahlzeit": "erste Mahlzeit",
-        "Preis": 5,
+        "Preis": 8,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
     {
         "Mahlzeit": "zweite Mahlzeit",
-        "Preis": 7,
+        "Preis": 15,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
@@ -53,33 +53,39 @@ function renderDinners() {
 };
 
 function pushToBasket(indexDinners) {
-    let dinner = dinnersArr[indexDinners];
+    // writing the function so that "Mahlzeit" appears once !!
+    let dinnerObj = dinnersArr[indexDinners];
     let searchDinner = null;
-    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {
-        if (dinner.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
-            searchDinner = basketArr[indexSearch];
+    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   // iteration to searching if .Mahlzeit existing
+        if (dinnerObj.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
+            searchDinner = basketArr[indexSearch];                      // searchDinner = became "true" if basket.mahlzeit === dinnerObj.Mahlzeit
             break;
-        }
+        };
     }
-    if (searchDinner) {
+    if (searchDinner) {                         // if (true) than added to the new amount + price
         searchDinner.amount++;
-        searchDinner.Preis*= 2;
+        searchDinner.Preis += dinnerObj.Preis; // whenever the button is clicked, the initial price is added to the new current price
     } else {
         basketArr.push({
-            Mahlzeit: dinner.Mahlzeit,
-            Preis: dinner.Preis,
-            amount: dinner.amount
+            Mahlzeit: dinnerObj.Mahlzeit,
+            Preis: dinnerObj.Preis,
+            amount: dinnerObj.amount
         });
     }
-    renderBasketOrders();
+    renderBasketOrders(indexDinners);
 };
 
-function renderBasketOrders() {
+function renderBasketOrders(indexDinners) {
     let basketOrder = document.getElementById('basket_order');
     basketOrder.innerHTML = '';
     for (let indexBasket = 0; indexBasket < basketArr.length; indexBasket++) {
         basketOrder.innerHTML += `
-        <p class="text-white fs-3">${basketArr[indexBasket].Mahlzeit}: ${basketArr[indexBasket].Preis}€ x${basketArr[indexBasket].amount}</p>
+        <p class="text-white fs-3">
+        ${basketArr[indexBasket].Mahlzeit}: ${basketArr[indexBasket].Preis}€ 
+        <button onclick="pushToBasket(${indexDinners})">+</button>
+        x${basketArr[indexBasket].amount}
+        <button>-</button>
+        </p>
          `;
     };
     renderBasketTotalPrice();

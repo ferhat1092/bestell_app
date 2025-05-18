@@ -75,6 +75,29 @@ function pushToBasket(indexDinners) {
     renderBasketOrders(indexDinners);
 };
 
+function popFromBasket(indexDinners) {
+    // just like the pushtobasket function..  
+    let dinnerObj = dinnersArr[indexDinners];
+    let searchDinner = null;
+    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   
+        if (dinnerObj.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
+            searchDinner = basketArr[indexSearch];                     
+            break;
+        };
+    }
+    if (searchDinner) {                         
+        searchDinner.amount--; // using -- instead of ++ to decrease
+        searchDinner.Preis -= dinnerObj.Preis; // whenever the button is clicked, the initial price is REMOVED to the new current price
+    } else {
+        basketArr.pop({
+            Mahlzeit: dinnerObj.Mahlzeit,
+            Preis: dinnerObj.Preis,
+            amount: dinnerObj.amount
+        });
+    }
+    renderBasketOrders(indexDinners);
+};
+
 function renderBasketOrders(indexDinners) {
     let basketOrder = document.getElementById('basket_order');
     basketOrder.innerHTML = '';
@@ -84,7 +107,7 @@ function renderBasketOrders(indexDinners) {
         ${basketArr[indexBasket].Mahlzeit}: ${basketArr[indexBasket].Preis}€ 
         <button onclick="pushToBasket(${indexDinners})">+</button>
         x${basketArr[indexBasket].amount}
-        <button>-</button>
+        <button onclick="popFromBasket(${indexDinners})">-</button>
         </p>
          `;
     };

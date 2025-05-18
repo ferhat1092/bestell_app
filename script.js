@@ -21,7 +21,7 @@ let dinnersArr = [
         "Mahlzeit": "vierte Mahlzeit",
         "Preis": 14,
         "Beschreibung": "die Beschreibung vom Essen",
-        "amount":1
+        "amount": 1
     },
     {
         "Mahlzeit": "fünfte Mahlzeit",
@@ -53,8 +53,25 @@ function renderDinners() {
 };
 
 function pushToBasket(indexDinners) {
-        basketArr.push(dinnersArr[indexDinners]);
-        renderBasketOrders();
+    let dinner = dinnersArr[indexDinners];
+    let searchDinner = null;
+    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {
+        if (dinner.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
+            searchDinner = basketArr[indexSearch];
+            break;
+        }
+    }
+    if (searchDinner) {
+        searchDinner.amount++;
+        searchDinner.Preis++;
+    } else {
+        basketArr.push({
+            Mahlzeit: dinner.Mahlzeit,
+            Preis: dinner.Preis,
+            amount: dinner.amount
+        });
+    }
+    renderBasketOrders();
 };
 
 function renderBasketOrders() {

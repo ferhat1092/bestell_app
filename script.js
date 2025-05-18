@@ -63,7 +63,7 @@ function pushToBasket(indexDinners) {
     }
     if (searchDinner) {
         searchDinner.amount++;
-        searchDinner.Preis++;
+        searchDinner.Preis*= 2;
     } else {
         basketArr.push({
             Mahlzeit: dinner.Mahlzeit,

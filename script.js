@@ -72,45 +72,45 @@ function pushToBasket(indexDinners) {
             amount: dinnerObj.amount
         });
     }
-    renderBasketOrders(indexDinners);
+    renderBasketOrders();
 };
 
 function popFromBasket(indexDinners) {
     // just like the pushtobasket function..  
     let dinnerObj = dinnersArr[indexDinners];
     let searchDinner = null;
-    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   
-        if (dinnerObj.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
-            searchDinner = basketArr[indexSearch];                     
+    let indexSearch = -1;
+
+    for (let i = 0; i < basketArr.length; i++) {
+        if (dinnerObj.Mahlzeit === basketArr[i].Mahlzeit) {
+            searchDinner = basketArr[i];
+            indexSearch = i;
             break;
         };
-    }
-    if (searchDinner) {                         
+    };
+   
+     if (searchDinner) {
         searchDinner.amount--; // using -- instead of ++ to decrease
         searchDinner.Preis -= dinnerObj.Preis; // whenever the button is clicked, the initial price is REMOVED to the new current price
-    } else {
-        basketArr.pop({
-            Mahlzeit: dinnerObj.Mahlzeit,
-            Preis: dinnerObj.Preis,
-            amount: dinnerObj.amount
-        });
-    }
-    renderBasketOrders(indexDinners);
+        
+        if (searchDinner.amount <= 0) {
+        basketArr.splice(indexSearch, 1);
+        };
+    };
+    renderBasketOrders();
 };
 
 function renderBasketOrders() {
     let basketOrder = document.getElementById('basket_order');
     basketOrder.innerHTML = '';
-
     for (let indexBasket = 0; indexBasket < basketArr.length; indexBasket++) {
         let dinnerIndex = -1;
         for (let i = 0; i < dinnersArr.length; i++) {
             if (dinnersArr[i].Mahlzeit === basketArr[indexBasket].Mahlzeit) {
                 dinnerIndex = i;
                 break;
-            }
-        }
-
+            };
+        };
         basketOrder.innerHTML += `
             <p class="text-white fs-3">
                 ${basketArr[indexBasket].Mahlzeit}: ${basketArr[indexBasket].Preis}€ 
@@ -119,7 +119,7 @@ function renderBasketOrders() {
                 <button onclick="popFromBasket(${dinnerIndex})">-</button>
             </p>
         `;
-    }
+    };
 
     renderBasketTotalPrice();
 };

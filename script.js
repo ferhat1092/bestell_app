@@ -117,11 +117,18 @@ function renderBasketOrders() {
                 <button onclick="pushToBasket(${dinnerIndex})">+</button>
                 x${basketArr[indexBasket].amount}
                 <button onclick="popFromBasket(${dinnerIndex})">-</button>
+                <button onclick="deleteBasketOrder(${indexBasket})">Löschen</button>
+
             </p>
         `;
     };
 
     renderBasketTotalPrice();
+};
+
+function deleteBasketOrder(indexBasket) {
+    basketArr.splice(indexBasket, 1);
+    renderBasketOrders();
 };
 
 function renderBasketTotalPrice() {

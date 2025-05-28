@@ -74,7 +74,7 @@ function pushToBasket(indexDinners) {
     renderBasketOrders();
 };
 
-function popFromBasket(indexDinners) {
+function spliceFromBasket(indexDinners) {
     // just like the pushtobasket function..  
     let dinnerObj = dinnersArr[indexDinners];
     let searchDinner = null;
@@ -114,7 +114,7 @@ function renderBasketOrders() {
                 ${basketArr[indexBasket].Mahlzeit}: ${orderPrice}€ 
                 <button onclick="pushToBasket(${dinnerIndex})">+</button>
                 x${basketArr[indexBasket].amount}
-                <button onclick="popFromBasket(${dinnerIndex})">-</button>
+                <button onclick="spliceFromBasket(${dinnerIndex})">-</button>
                 <button onclick="deleteBasketOrder(${indexBasket})">Löschen</button>
 
             </p>

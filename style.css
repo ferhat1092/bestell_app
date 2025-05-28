@@ -1,0 +1,23 @@
+* {
+    caret-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(21, 73, 121);
+}
+
+img {
+    display: block;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

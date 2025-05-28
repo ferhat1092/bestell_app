@@ -110,7 +110,7 @@ function renderBasketOrders() {
         };
         let orderPrice = basketArr[indexBasket].Preis*basketArr[indexBasket].amount;
         basketOrder.innerHTML += `
-            <p class="text-white fs-3">
+            <p class="">
                 ${basketArr[indexBasket].Mahlzeit}: ${orderPrice}€ 
                 <button onclick="pushToBasket(${dinnerIndex})">+</button>
                 x${basketArr[indexBasket].amount}
@@ -136,7 +136,7 @@ function renderBasketTotalPrice() {
     for (let indexTotal = 0; indexTotal < basketArr.length; indexTotal++) {
         totalPrice += basketArr[indexTotal].Preis;
         basketTotalPrice.innerHTML = `
-        <p class="text-white fs-3">Gesamt: ${totalPrice}€</p>
+        <p class="">Gesamt: ${totalPrice}€</p>
         `;
     };
 };

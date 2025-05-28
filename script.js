@@ -62,9 +62,8 @@ function pushToBasket(indexDinners) {
             break;
         };
     }
-    if (searchDinner) {                         // if (true) than added to the new amount + price
+    if (searchDinner) {                         // if (true) than added to the new amount 
         searchDinner.amount++;
-        searchDinner.Preis += dinnerObj.Preis; // whenever the button is clicked, the initial price is added to the new current price
     } else {
         basketArr.push({
             Mahlzeit: dinnerObj.Mahlzeit,
@@ -91,8 +90,6 @@ function popFromBasket(indexDinners) {
    
      if (searchDinner) {
         searchDinner.amount--; // using -- instead of ++ to decrease
-        searchDinner.Preis -= dinnerObj.Preis; // whenever the button is clicked, the initial price is REMOVED to the new current price
-        
         if (searchDinner.amount <= 0) {
         basketArr.splice(indexSearch, 1);
         };
@@ -111,9 +108,10 @@ function renderBasketOrders() {
                 break;
             };
         };
+        let orderPrice = basketArr[indexBasket].Preis*basketArr[indexBasket].amount;
         basketOrder.innerHTML += `
             <p class="text-white fs-3">
-                ${basketArr[indexBasket].Mahlzeit}: ${basketArr[indexBasket].Preis}€ 
+                ${basketArr[indexBasket].Mahlzeit}: ${orderPrice}€ 
                 <button onclick="pushToBasket(${dinnerIndex})">+</button>
                 x${basketArr[indexBasket].amount}
                 <button onclick="popFromBasket(${dinnerIndex})">-</button>

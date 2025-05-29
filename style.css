@@ -18,6 +18,11 @@ img {
 
 .main-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+}
+
+.basket {
+    width: 300px;
+    position: sticky;
 }

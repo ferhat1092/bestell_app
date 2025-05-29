@@ -46,7 +46,7 @@ function renderDinners() {
             <h5 class="card-title text-white fs-1 text-center">${dinnersArr[indexDinners].Mahlzeit}</h5>
             <h6 class="card-subtitle text-muted">Preis: ${dinnersArr[indexDinners].Preis}€</h6>
             <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
-            <button class="btn btn-dark" onclick="pushToBasket(${indexDinners})">In den Warenkorb</button>
+            <button class="btn btn-dark" onclick="pushToBasket(${indexDinners})">+</button>
         </div>
         `;
     };

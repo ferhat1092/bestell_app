@@ -1,37 +1,38 @@
 let dinnersArr = [
     {
         "Mahlzeit": "erste Mahlzeit",
-        "Preis": 8,
+        "Preis": 8.50,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
     {
         "Mahlzeit": "zweite Mahlzeit",
-        "Preis": 15,
+        "Preis": 15.99,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
     {
         "Mahlzeit": "dritte Mahlzeit",
-        "Preis": 11,
+        "Preis": 11.50,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
     {
         "Mahlzeit": "vierte Mahlzeit",
-        "Preis": 14,
+        "Preis": 14.99,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     },
     {
         "Mahlzeit": "fünfte Mahlzeit",
-        "Preis": 16,
+        "Preis": 16.50,
         "Beschreibung": "die Beschreibung vom Essen",
         "amount": 1
     }
 ];
 
 let basketArr = [];
+const deliveryCosts = 5;
 
 function init() {
     renderDinners();
@@ -42,11 +43,11 @@ function renderDinners() {
     dinners.innerHTML = '';
     for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
         dinners.innerHTML += `
-        <div class="card w-100 mb-2 bg-secondary">
-            <h5 class="card-title text-white fs-1 text-center">${dinnersArr[indexDinners].Mahlzeit}</h5>
-            <h6 class="card-subtitle text-muted">Preis: ${dinnersArr[indexDinners].Preis}€</h6>
+        <div class="card">
+            <h5 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
+            <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2)}€</h6>
             <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
-            <button class="btn btn-dark" onclick="pushToBasket(${indexDinners})">+</button>
+            <button class="" onclick="pushToBasket(${indexDinners})">+</button>
         </div>
         `;
     };
@@ -87,11 +88,11 @@ function spliceFromBasket(indexDinners) {
             break;
         };
     };
-   
-     if (searchDinner) {
+
+    if (searchDinner) {
         searchDinner.amount--; // using -- instead of ++ to decrease
         if (searchDinner.amount <= 0) {
-        basketArr.splice(indexSearch, 1);
+            basketArr.splice(indexSearch, 1);
         };
     };
     renderBasketOrders();
@@ -108,9 +109,9 @@ function renderBasketOrders() {
                 break;
             };
         };
-        let orderPrice = basketArr[indexBasket].Preis*basketArr[indexBasket].amount;
+        let orderPrice = (basketArr[indexBasket].Preis * basketArr[indexBasket].amount).toFixed(2);
         basketOrder.innerHTML += `
-            <p class="">
+            <p class="card">
                 ${basketArr[indexBasket].Mahlzeit}: ${orderPrice}€ 
                 <button onclick="pushToBasket(${dinnerIndex})">+</button>
                 x${basketArr[indexBasket].amount}
@@ -134,11 +135,12 @@ function renderBasketTotalPrice() {
     let basketTotalPrice = document.getElementById('basket_total_price');
     basketTotalPrice.innerHTML = '';
     for (let indexTotal = 0; indexTotal < basketArr.length; indexTotal++) {
-        totalPrice += basketArr[indexTotal].Preis;
-        basketTotalPrice.innerHTML = `
-        <p class="">Gesamt: ${totalPrice}€</p>
+        totalPrice += basketArr[indexTotal].Preis * basketArr[indexTotal].amount;
+    }
+    basketTotalPrice.innerHTML = `
+        <p>Lieferkosten: ${deliveryCosts.toFixed(2)}€</p>
+        <p class="">Gesamt: ${(totalPrice + deliveryCosts).toFixed(2)}€</p>
         `;
-    };
 };
 
 

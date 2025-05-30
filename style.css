@@ -10,17 +10,12 @@ html {
 }
 
 body {
-    background-color: rgb(26, 88, 146);
+    background-color: rgb(196, 158, 82);
     font-family: "Roboto Condensed", sans-serif;
 }
 
-img {
-    display: block;
-    border-radius: 8px;
-}
-
 header {
-    border-bottom: 2px solid black;
+    box-shadow: inset 0px -24px 24px rgba(255, 255, 255, 0.5);
 }
 
 .header-logo {
@@ -32,12 +27,26 @@ header {
     display: flex;
     justify-content: space-between;
 }
+.hero {
+    width: 100%;
+}
+
+.hero-img-container {
+    width: 100%;
+    height: 300px;
+}
+
+.hero-img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
 .basket {
-    width: 300px;
+    width: 500px;
     position: sticky;
     top: 0;
-    border: 2px solid black;
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .card {

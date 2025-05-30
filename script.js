@@ -44,7 +44,7 @@ function renderDinners() {
     for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
         dinners.innerHTML += `
         <div class="card">
-            <h5 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
+            <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
             <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2)}€</h6>
             <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
             <button class="" onclick="pushToBasket(${indexDinners})">+</button>

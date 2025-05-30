@@ -46,7 +46,7 @@ function renderDinners() {
         <div class="card">
         <div>
             <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
-            <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2)}€</h6>
+            <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2).replace('.',',')}€</h6>
             <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
         </div>
         <div>    
@@ -117,9 +117,9 @@ function renderBasketOrders() {
         basketOrder.innerHTML += `
             <div class="orders">
                 <div class="orders-content">
-                <h3> ${basketArr[indexBasket].Mahlzeit} <h6>${orderPrice}€</h6></h3> 
+                <h3> ${basketArr[indexBasket].Mahlzeit} <h6>${orderPrice.replace('.',',')}€</h6></h3> 
                    <button onclick="pushToBasket(${dinnerIndex})">+</button>
-                       x${basketArr[indexBasket].amount}
+                       ${basketArr[indexBasket].amount}
                       <button onclick="spliceFromBasket(${dinnerIndex})">-</button>
                 </div>      
                 <div class="delete-btn-container">
@@ -146,8 +146,8 @@ function renderBasketTotalPrice() {
     }
     basketTotalPrice.innerHTML = `
         <div class="total-price">
-        <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2)}€</h6>
-        <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2)}€</h4>
+        <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2).replace('.',',')}€</h6>
+        <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2).replace('.',',')}€</h4>
         </div>
         `;
 };

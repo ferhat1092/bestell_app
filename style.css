@@ -14,9 +14,6 @@ body {
     font-family: "Roboto Condensed", sans-serif;
 }
 
-header {
-}
-
 .header-logo {
     height: 125px;
     padding: 24px;
@@ -29,6 +26,10 @@ header {
 .hero {
     background-color: rgb(176, 138, 52);
     width: 100%;
+}
+
+.hero-title {
+    padding: 24px;
 }
 
 .hero-img-container {

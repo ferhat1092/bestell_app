@@ -1,32 +1,32 @@
 let dinnersArr = [
     {
-        "Mahlzeit": "erste Mahlzeit",
+        "Mahlzeit": "Döner",
         "Preis": 8.50,
-        "Beschreibung": "die Beschreibung vom Essen",
+        "Beschreibung": "Dönertasche mit Kalbfleisch und Salat",
         "amount": 1
     },
     {
-        "Mahlzeit": "zweite Mahlzeit",
+        "Mahlzeit": "Dönerteller",
         "Preis": 15.99,
-        "Beschreibung": "die Beschreibung vom Essen",
+        "Beschreibung": "Dönerteller mit Kalbfleisch, Salat und Pommes",
         "amount": 1
     },
     {
-        "Mahlzeit": "dritte Mahlzeit",
+        "Mahlzeit": "Döner überbacken",
         "Preis": 11.50,
-        "Beschreibung": "die Beschreibung vom Essen",
+        "Beschreibung": "Döner(Kalbfleisch) mit Käse überbacken",
         "amount": 1
     },
     {
-        "Mahlzeit": "vierte Mahlzeit",
+        "Mahlzeit": "Dürüm",
         "Preis": 14.99,
-        "Beschreibung": "die Beschreibung vom Essen",
+        "Beschreibung": "Dürümdöner mit Kalbfleisch und Salat",
         "amount": 1
     },
     {
-        "Mahlzeit": "fünfte Mahlzeit",
+        "Mahlzeit": "Iskender",
         "Preis": 16.50,
-        "Beschreibung": "die Beschreibung vom Essen",
+        "Beschreibung": "Dönerfleisch(Kalbfleisch) mit Joghurt, Tomatensauce und frittiertem Brot",
         "amount": 1
     }
 ];
@@ -44,10 +44,14 @@ function renderDinners() {
     for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
         dinners.innerHTML += `
         <div class="card">
+        <div>
             <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
             <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2)}€</h6>
             <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
+        </div>
+        <div>    
             <button class="" onclick="pushToBasket(${indexDinners})">+</button>
+        </div>    
         </div>
         `;
     };
@@ -111,14 +115,17 @@ function renderBasketOrders() {
         };
         let orderPrice = (basketArr[indexBasket].Preis * basketArr[indexBasket].amount).toFixed(2);
         basketOrder.innerHTML += `
-            <p class="card">
-                ${basketArr[indexBasket].Mahlzeit}: ${orderPrice}€ 
-                <button onclick="pushToBasket(${dinnerIndex})">+</button>
-                x${basketArr[indexBasket].amount}
-                <button onclick="spliceFromBasket(${dinnerIndex})">-</button>
-                <button onclick="deleteBasketOrder(${indexBasket})">Löschen</button>
-
-            </p>
+            <div class="orders">
+                <div class="orders-content">
+                <h3> ${basketArr[indexBasket].Mahlzeit} <h6>${orderPrice}€</h6></h3> 
+                   <button onclick="pushToBasket(${dinnerIndex})">+</button>
+                       x${basketArr[indexBasket].amount}
+                      <button onclick="spliceFromBasket(${dinnerIndex})">-</button>
+                </div>      
+                <div class="delete-btn-container">
+                    <button onclick="deleteBasketOrder(${indexBasket})">x</button>
+                </div>
+            </div>
         `;
     };
 
@@ -138,8 +145,10 @@ function renderBasketTotalPrice() {
         totalPrice += basketArr[indexTotal].Preis * basketArr[indexTotal].amount;
     }
     basketTotalPrice.innerHTML = `
-        <p>Lieferkosten: ${deliveryCosts.toFixed(2)}€</p>
-        <p class="">Gesamt: ${(totalPrice + deliveryCosts).toFixed(2)}€</p>
+        <div class="total-price">
+        <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2)}€</h6>
+        <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2)}€</h4>
+        </div>
         `;
 };
 

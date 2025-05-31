@@ -33,6 +33,7 @@ let dinnersArr = [
 
 let basketArr = [];
 const deliveryCosts = 5;
+let basketTotalPrice = document.getElementById('basket_total_price');
 
 function init() {
     renderDinners();
@@ -128,6 +129,11 @@ function renderBasketOrders() {
             </div>
         `;
     };
+    
+    if (basketArr.length === 0) {
+        basketTotalPrice.innerHTML = '<p>Deine Bestellung wurde aufgenommen.Vielen Dank!</p>';
+        return;
+    };
 
     renderBasketTotalPrice();
 };
@@ -139,7 +145,7 @@ function deleteBasketOrder(indexBasket) {
 
 function renderBasketTotalPrice() {
     let totalPrice = 0;
-    let basketTotalPrice = document.getElementById('basket_total_price');
+    
     basketTotalPrice.innerHTML = '';
     for (let indexTotal = 0; indexTotal < basketArr.length; indexTotal++) {
         totalPrice += basketArr[indexTotal].Preis * basketArr[indexTotal].amount;
@@ -149,7 +155,13 @@ function renderBasketTotalPrice() {
         <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2).replace('.',',')}€</h6>
         <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2).replace('.',',')}€</h4>
         </div>
+        <button onclick="basketOrdersButton()">Bestellen</button>
         `;
+};
+
+function basketOrdersButton() {
+    basketArr.length = 0;
+    renderBasketOrders();
 };
 
 

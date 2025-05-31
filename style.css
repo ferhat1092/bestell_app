@@ -121,3 +121,18 @@ footer img {
     width: 200px;
     padding: 24px;
 }
+
+@media (max-width: 1200px) {
+    .card {
+        margin: 64px;
+    }
+     .hero-title {
+        display: block;
+        text-align: center;
+        margin: 64px;
+    }
+}
+
+@media (max-width: 770px) {
+
+} 

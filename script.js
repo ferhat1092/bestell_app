@@ -34,7 +34,7 @@ let dinnersArr = [
 let basketArr = [];
 const deliveryCosts = 5;
 let basketTotalPrice = document.getElementById('basket_total_price');
-let basketOrder = document.getElementById('basket_order');
+let basketOrder = document.getElementsByClassName('basket_order')[0];
 
 function init() {
     renderDinners();

@@ -170,6 +170,7 @@ footer img {
         background-color: #333;
         border: none;
         color: #ccc;
+        border-radius: 0%;
     }
 
     .overlay-btn:hover {

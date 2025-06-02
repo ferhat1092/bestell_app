@@ -44,11 +44,16 @@ function renderDinners() {
     let dinners = document.getElementById('dinners');
     dinners.innerHTML = '';
     for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
-        dinners.innerHTML += `
+        dinners.innerHTML += getDinnersTemplates(indexDinners);
+    };
+};
+
+function getDinnersTemplates(indexDinners) {
+    return `
         <div class="card">
         <div>
-            <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
-            <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2).replace('.',',')}€</h6>
+            <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h3>
+            <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2).replace('.', ',')}€</h6>
             <p class="card-text d-none">${dinnersArr[indexDinners].Beschreibung}</p>
         </div>
         <div>    
@@ -56,8 +61,7 @@ function renderDinners() {
         </div>    
         </div>
         `;
-    };
-};
+}
 
 function pushToBasket(indexDinners) {
     // writing the function so that "Mahlzeit" appears once !!
@@ -115,10 +119,17 @@ function renderBasketOrders() {
             };
         };
         let orderPrice = (basketArr[indexBasket].Preis * basketArr[indexBasket].amount).toFixed(2);
-        basketOrder.innerHTML += `
+        basketOrder.innerHTML += getBasketOrderTemplates(indexBasket, dinnerIndex, orderPrice);
+    };
+
+    renderBasketTotalPrice();
+};
+
+function getBasketOrderTemplates(indexBasket, dinnerIndex, orderPrice) {
+    return `
             <div class="orders">
                 <div class="orders-content">
-                <h3> ${basketArr[indexBasket].Mahlzeit} <h6>${orderPrice.replace('.',',')}€</h6></h3> 
+                <h3> ${basketArr[indexBasket].Mahlzeit} <h6>${orderPrice.replace('.', ',')}€</h6></h3> 
                    <button onclick="pushToBasket(${dinnerIndex})">+</button>
                        ${basketArr[indexBasket].amount}
                       <button onclick="spliceFromBasket(${dinnerIndex})">-</button>
@@ -128,10 +139,7 @@ function renderBasketOrders() {
                 </div>
             </div>
         `;
-    };
-
-    renderBasketTotalPrice();
-};
+}
 
 function deleteBasketOrder(indexBasket) {
     basketArr.splice(indexBasket, 1);
@@ -140,18 +148,24 @@ function deleteBasketOrder(indexBasket) {
 
 function renderBasketTotalPrice() {
     let totalPrice = 0;
-    
-    basketTotalPrice.innerHTML = '';
-    for (let indexTotal = 0; indexTotal < basketArr.length; indexTotal++) {
-        totalPrice += basketArr[indexTotal].Preis * basketArr[indexTotal].amount;
-    }
-    basketTotalPrice.innerHTML = `
+
+    if (basketArr.length === 0) {               // if basket empty than delete totalprice too
+        basketTotalPrice.innerHTML = '';
+
+    } else {
+
+        basketTotalPrice.innerHTML = '';
+        for (let indexTotal = 0; indexTotal < basketArr.length; indexTotal++) {
+            totalPrice += basketArr[indexTotal].Preis * basketArr[indexTotal].amount;
+        }
+        basketTotalPrice.innerHTML = `
         <div class="total-price">
-        <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2).replace('.',',')}€</h6>
-        <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2).replace('.',',')}€</h4>
+        <h6>zzgl. Lieferkosten: ${deliveryCosts.toFixed(2).replace('.', ',')}€</h6>
+        <h4>Gesamt: ${(totalPrice + deliveryCosts).toFixed(2).replace('.', ',')}€</h4>
         </div>
         <button class="btn-order" onclick="basketOrdersButton()">Bestellen</button>
         `;
+    };
 };
 
 function basketOrdersButton() {
@@ -168,6 +182,6 @@ function basketOrdersButton() {
 function toggleOverlay() {
     let overlay = document.getElementsByClassName('overlay')[0];
     overlay.classList.toggle('d-none');
-}
+};
 
 

@@ -113,6 +113,10 @@ button:hover {
     margin-top: 16px;
 }
 
+.overlay-btn {
+    display: none;
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -139,12 +143,36 @@ footer img {
 }
 
 @media (max-width: 770px) {
+    .card {
+        margin: 64px 48px;
+    }
+
     .overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .overlay-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 94%;
+        width: 100%;
+        height: 56px;
+        background-color: #333;
+        border: none;
+        color: #ccc;
+    }
+
+    .overlay-btn:hover {
+        background-color: #222;
     }
 }

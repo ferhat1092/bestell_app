@@ -25,17 +25,18 @@
             <h1 class="hero-title">DAILY DÖNER</h1>
             <div id="dinners"></div>
         </div>
-        <div class="basket-wrapper overlay">
+        <div class="basket-wrapper overlay d-none">
             <div class="basket">
                 <div id="basket_header">
-                    <h3 class="basket-title">Warenkorb</h3>
+                    <h3 class="basket-title d-none">Warenkorb</h3>
                 </div>
                 <div class="basket_order"></div>
                 <div id="basket_total_price"></div>
             </div>
         </div>
+        <button class="overlay-btn" onclick="toggleOverlay()"><h3>Warenkorb</h3></button>
     </section>
-    <footer>
+    <footer class="d-none">
 
         <img src="./img/Logo/Bestell App- Logo.svg" alt="">
 

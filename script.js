@@ -49,7 +49,7 @@ function renderDinners() {
         <div>
             <h3 class="card-title">${dinnersArr[indexDinners].Mahlzeit}</h5>
             <h6 class="card-subtitle">Preis: ${dinnersArr[indexDinners].Preis.toFixed(2).replace('.',',')}€</h6>
-            <p class="card-text">${dinnersArr[indexDinners].Beschreibung}</p>
+            <p class="card-text d-none">${dinnersArr[indexDinners].Beschreibung}</p>
         </div>
         <div>    
             <button class="" onclick="pushToBasket(${indexDinners})">+</button>
@@ -164,5 +164,10 @@ function basketOrdersButton() {
     };
 
 };
+
+function toggleOverlay() {
+    let overlay = document.getElementsByClassName('overlay')[0];
+    overlay.classList.toggle('d-none');
+}
 
 

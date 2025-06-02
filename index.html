@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App von Ferhat</title>
+    <link rel="stylesheet" href="standart.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="basket.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     <link rel="shortcut icon" href="./img/Favicon/android-chrome-192x192.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,17 +38,18 @@
                 <div id="basket_total_price"></div>
             </div>
         </div>
-        <button class="overlay-btn" onclick="toggleOverlay()"><h3>Warenkorb</h3></button>
+        <button class="overlay-btn" onclick="toggleOverlay()">
+            <h3>Warenkorb</h3>
+        </button>
     </section>
     <footer class="d-none">
-
         <img src="./img/Logo/Bestell App- Logo.svg" alt="">
-
     </footer>
-
-
+    
+    <script src="db.js"></script>
+    <script src="onclick.js"></script>
+    <script src="templates.js"></script>
     <script src="script.js"></script>
-
 </body>
 
 </html>

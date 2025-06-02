@@ -1,0 +1,10 @@
+* {
+    caret-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 24px;
+}

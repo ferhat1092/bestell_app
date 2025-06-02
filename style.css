@@ -1,14 +1,3 @@
-* {
-    caret-color: transparent;
-    box-sizing: border-box;
-    margin: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 24px;
-}
-
 body {
     background-color: rgb(186, 148, 72);
     font-family: "Roboto Condensed", sans-serif;
@@ -53,32 +42,6 @@ header {
     object-fit: cover;
 }
 
-.basket-wrapper {
-    background-color: rgb(206, 168, 92);
-    width: 500px;
-}
-
-.basket {
-    position: sticky;
-    top: 0;
-    padding: 24px;
-}
-
-.basket-title {
-    display: flex;
-    justify-content: center;
-    padding: 24px;
-}
-
-.orders {
-    display: flex;
-    justify-content: space-between;
-    margin: 24px;
-    padding: 8px;
-    border-radius: 8px;
-    background-color: rgb(228, 190, 168);
-}
-
 .card {
     display: flex;
     justify-content: space-between;
@@ -86,35 +49,6 @@ header {
     padding: 24px;
     border-radius: 8px;
     background-color: rgb(228, 190, 168);
-}
-
-.total-price {
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    padding-top: 24px;
-}
-
-button {
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-    background-color: #e6e6e6;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn-order {
-    margin-top: 16px;
-}
-
-.overlay-btn {
-    display: none;
 }
 
 footer {
@@ -125,55 +59,4 @@ footer {
 footer img {
     width: 200px;
     padding: 24px;
-}
-
-
-
-
-@media (max-width: 1200px) {
-    .card {
-        margin: 64px;
-    }
-
-    .hero-title {
-        display: block;
-        text-align: center;
-        margin: 64px;
-    }
-}
-
-@media (max-width: 770px) {
-    .card {
-        margin: 64px 48px;
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .d-none {
-        display: none;
-    }
-
-    .overlay-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 94%;
-        width: 100%;
-        height: 56px;
-        background-color: #333;
-        border: none;
-        color: #ccc;
-        border-radius: 0%;
-    }
-
-    .overlay-btn:hover {
-        background-color: #222;
-    }
 }

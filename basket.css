@@ -1,0 +1,30 @@
+.basket-wrapper {
+    background-color: rgb(206, 168, 92);
+    width: 500px;
+}
+
+.basket {
+    position: sticky;
+    top: 0;
+    padding: 24px;
+}
+
+.basket-title {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+}
+
+.orders {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: rgb(228, 190, 168);
+}
+
+.total-price {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 24px;
+}

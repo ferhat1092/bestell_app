@@ -34,7 +34,7 @@ function renderBasketOrders() {
 
 function renderBasketTotalPrice() {
     let totalPrice = 0;
-    if (basketArr.length === 0) {               // if basket empty than delete totalprice too
+    if (basketArr.length === 0) {               
         basketTotalPrice.innerHTML = '';
     } else {
         basketTotalPrice.innerHTML = '';

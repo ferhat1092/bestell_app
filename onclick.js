@@ -1,14 +1,13 @@
 function pushToBasket(indexDinners) {
-    // writing the function so that "Mahlzeit" appears once !!
     let dinnerObj = dinnersArr[indexDinners];
     let searchDinner = null;
-    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   // iteration to searching if .Mahlzeit existing
+    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   
         if (dinnerObj.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
-            searchDinner = basketArr[indexSearch];                      // searchDinner = became "true" if basket.mahlzeit === dinnerObj.Mahlzeit
+            searchDinner = basketArr[indexSearch];                      
             break;
         };
     }
-    if (searchDinner) {                         // if (true) than added to the new amount 
+    if (searchDinner) {                         
         searchDinner.amount++;
     } else {
         basketArr.push({
@@ -21,7 +20,6 @@ function pushToBasket(indexDinners) {
 };
 
 function spliceFromBasket(indexDinners) {
-    // just like the pushtobasket function..  
     let dinnerObj = dinnersArr[indexDinners];
     let searchDinner = null;
     let indexSearch = -1;
@@ -33,7 +31,7 @@ function spliceFromBasket(indexDinners) {
         };
     };
     if (searchDinner) {
-        searchDinner.amount--; // using -- instead of ++ to decrease
+        searchDinner.amount--; 
         if (searchDinner.amount <= 0) {
             basketArr.splice(indexSearch, 1);
         };

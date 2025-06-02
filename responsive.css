@@ -16,6 +16,7 @@
     }
 
     .overlay {
+        background-color: rgb(128, 123, 64);
         position: fixed;
         top: 0;
         left: 0;
@@ -46,4 +47,8 @@
     .overlay-btn:hover {
         background-color: #222;
     }
+
+    .btn-order {
+    margin-bottom: 42px;
+}
 }

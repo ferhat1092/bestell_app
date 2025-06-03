@@ -1,12 +1,6 @@
 function pushToBasket(indexDinners) {
     let dinnerObj = dinnersArr[indexDinners];
-    let searchDinner = null;
-    for (let indexSearch = 0; indexSearch < basketArr.length; indexSearch++) {   
-        if (dinnerObj.Mahlzeit === basketArr[indexSearch].Mahlzeit) {
-            searchDinner = basketArr[indexSearch];                      
-            break;
-        };
-    }
+    let searchDinner = basketArr.find(item => item.Mahlzeit === dinnerObj.Mahlzeit)
     if (searchDinner) {                         
         searchDinner.amount++;
     } else {
@@ -21,19 +15,12 @@ function pushToBasket(indexDinners) {
 
 function spliceFromBasket(indexDinners) {
     let dinnerObj = dinnersArr[indexDinners];
-    let searchDinner = null;
-    let indexSearch = -1;
-    for (let i = 0; i < basketArr.length; i++) {
-        if (dinnerObj.Mahlzeit === basketArr[i].Mahlzeit) {
-            searchDinner = basketArr[i];
-            indexSearch = i;
-            break;
-        };
-    };
-    if (searchDinner) {
-        searchDinner.amount--; 
-        if (searchDinner.amount <= 0) {
-            basketArr.splice(indexSearch, 1);
+    let indexInBasket = basketArr.findIndex(item => item.Mahlzeit === dinnerObj.Mahlzeit)
+    if (indexInBasket !== -1) {
+        let objInBasket = basketArr[indexInBasket];
+        objInBasket.amount --; 
+        if (objInBasket.amount <= 0) {
+            basketArr.splice(indexInBasket, 1);
         };
     };
     renderBasketOrders();

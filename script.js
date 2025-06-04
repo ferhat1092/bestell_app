@@ -10,25 +10,15 @@ function init() {
 
 function renderDinners() {
     let dinners = document.getElementById('dinners');
-    dinners.innerHTML = '';
-    for (let indexDinners = 0; indexDinners < dinnersArr.length; indexDinners++) {
-        dinners.innerHTML += getDinnersTemplates(indexDinners);
-    };
+    dinners.innerHTML = dinnersArr.map((item, indexDinners) => getDinnersTemplates(item, indexDinners)).join('')
 };
 
 function renderBasketOrders() {
-    basketOrder.innerHTML = '';
-    for (let indexBasket = 0; indexBasket < basketArr.length; indexBasket++) {
-        let dinnerIndex = -1;
-        for (let i = 0; i < dinnersArr.length; i++) {
-            if (dinnersArr[i].Mahlzeit === basketArr[indexBasket].Mahlzeit) {
-                dinnerIndex = i;
-                break;
-            };
-        };
-        let orderPrice = (basketArr[indexBasket].Preis * basketArr[indexBasket].amount).toFixed(2);
-        basketOrder.innerHTML += getBasketOrderTemplates(indexBasket, dinnerIndex, orderPrice);
-    };
+    basketOrder.innerHTML = basketArr.map((basketItem, indexBasket) => {
+        let dinnerIndex = dinnersArr.findIndex(item => item.Mahlzeit === basketItem.Mahlzeit);
+        let orderPrice = (basketItem.Preis * basketItem.amount).toFixed(2);
+        return getBasketOrderTemplates(indexBasket, basketItem, dinnerIndex, orderPrice);
+    }).join('');
     renderBasketTotalPrice();
 };
 

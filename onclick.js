@@ -7,7 +7,7 @@ function pushToBasket(indexDinners) {
         basketArr.push({
             Mahlzeit: dinnerObj.Mahlzeit,
             Preis: dinnerObj.Preis,
-            amount: dinnerObj.amount
+            amount: 1
         });
     }
     renderBasketOrders();
